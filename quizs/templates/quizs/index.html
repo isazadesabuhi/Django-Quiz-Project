@@ -1,0 +1,23 @@
+<div id="quiz-question">{{ quiz.question }}</div>
+<input type="text" id="myTextInput" />
+<button onclick="checkAnswer()">Check Answer</button>
+
+<script>
+  var quiz = {
+    answer: "{{ quiz.answer|escapejs }}",
+  };
+
+  function checkAnswer() {
+    //gets the value from the answer input
+    var inputValue = document.getElementById("myTextInput").value;
+
+    //alerts depending on the answer
+    if (inputValue.toLowerCase() === quiz.answer.toLowerCase()) {
+      alert("You are right!");
+    } else {
+      alert("Try again!");
+    }
+    //reloads the page after alert is closed and gives another random question
+    window.location.reload();
+  }
+</script>
